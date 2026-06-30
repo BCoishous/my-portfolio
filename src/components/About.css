@@ -1,0 +1,73 @@
+.about {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 6rem 2.5rem;
+}
+
+.section-label {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.about-text p {
+  color: var(--muted);
+  font-size: 0.975rem;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+
+.about-text p strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.skills-block h3 {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.skills-block h3:first-child {
+  margin-top: 0;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 3px;
+  background: var(--accent-dim);
+  color: var(--accent);
+  border: 1px solid rgba(212, 120, 58, 0.2);
+}
