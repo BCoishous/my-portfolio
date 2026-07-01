@@ -32,3 +32,51 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
+
+@media (max-width: 640px) {
+  nav {
+    padding: 1rem 1.25rem;
+  }
+
+  .nav-links {
+    gap: 1.2rem;
+  }
+
+  .hero,
+  .about,
+  .projects,
+  .contact {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .hero-headline {
+    font-size: 1.4rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contact-heading {
+    font-size: 1.2rem;
+  }
+
+  .btn {
+    font-size: 0.8rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor {
+    animation: none;
+    opacity: 1;
+  }
+
+  .hero-sub,
+  .hero-actions {
+    opacity: 1;
+  }
+}
