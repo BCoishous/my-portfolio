@@ -2,6 +2,21 @@ import "./Projects.css";
 
 const projects = [
   {
+    title: "Software Study Scripts",
+    description:
+      "A full stack developer learning platform built from scratch with a co-founder. Features a complete auth system with email verification, secure password reset, server-side sessions, personal notes, bookmarks, and a full lesson library.",
+    tags: [
+      "React 19",
+      "Hono",
+      "TypeScript",
+      "Cloudflare Workers",
+      "D1",
+      "Prisma",
+    ],
+    link: "https://softwarestudyscripts.com",
+    live: true,
+  },
+  {
     title: "Meeting of the Minds Trivia Championship",
     description:
       "Production event website for St. John's annual trivia championship, built and shipped on a live public deadline as a volunteer developer with NL Eats. Real users, real consequences, real deadline.",
