@@ -161,7 +161,7 @@ function PowerBtn ({ on, onClick, color }) {
 const CLIPS = [
   { label: "Drums",  url: "/audio/clip-drums.wav"  },
   { label: "Guitar", url: "/audio/clip-guitar.wav" },
-  { label: "Synth",  url: "/audio/clip-synth.wav"  },
+  { label: "Piano",  url: "/audio/clip-piano.wav"  },
 ];
 
 const AMBER = "#c49a52";
