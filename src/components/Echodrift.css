@@ -1,272 +1,215 @@
 .ed-section {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 6rem 2.5rem;
+  padding: 80px 24px 60px;
 }
 
 .ed-byline {
-  font-size: 0.875rem;
-  color: var(--muted);
-  margin-top: 0.4rem;
-  margin-bottom: 2.5rem;
-  line-height: 1.6;
+  color: rgba(255,255,255,0.45);
+  font-size: 13px;
+  margin: 4px 0 24px;
+  letter-spacing: 0.02em;
 }
 
-/* ── Plugin shell ───────────────────────────────────────────────────────── */
-.ed-plugin {
-  background: #0b0c10;
-  border: 1px solid rgba(196, 154, 82, 0.18);
-  border-radius: 10px;
+/* ── Plugin shell ─────────────────────────────────────────────────────────── */
+.plugin-outer {
+  position: relative;
+  width: 100%;
   overflow: hidden;
-  box-shadow:
-    0 0 0 1px rgba(0,0,0,0.6),
-    0 8px 40px rgba(0,0,0,0.6);
+  margin: 0 auto;
 }
 
-/* ── Header ─────────────────────────────────────────────────────────────── */
-.ed-header {
+.plugin-inner {
+  position: relative;
+  width: 1208px;
+  height: 319px;
+}
+
+.plugin-navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.plugin-faceplate {
+  position: absolute;
+  left: 0;
+}
+
+/* ── Settings panel — styled to match the plugin's SettingsPanel.cpp ─────── */
+.ed-adv {
+  max-width: 1208px;
+  margin: 0 auto;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 1.5rem;
-  background: #0e0f14;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  /* warm-dark gradient matching SettingsPanel::paint background */
+  background: linear-gradient(180deg, #141312 0%, #0e0d0c 100%);
+  /* top separator: 1px dark shadow + 1px faint highlight, exactly as in plugin */
+  border-top: 1px solid #0a0908;
+  box-shadow: inset 0 1px 0 #2e2b26;
 }
 
-.ed-name {
-  font-family: var(--sans);
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text);
-  letter-spacing: 0.03em;
-  margin-right: 0.75rem;
-}
-
-.ed-tagline {
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  color: var(--muted);
-  letter-spacing: 0.08em;
-}
-
-.ed-brand {
-  font-family: var(--sans);
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: rgba(196, 154, 82, 0.55);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-/* ── Faceplate ───────────────────────────────────────────────────────────── */
-.ed-faceplate {
-  display: flex;
-  align-items: stretch;
-  padding: 1.25rem 1rem;
-  gap: 0;
-  background: linear-gradient(180deg, #111318 0%, #0d0e12 100%);
-}
-
-.ed-section-block {
-  flex: 1;
+.ed-adv-group {
+  padding: 10px 20px 14px;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  padding: 0 1rem;
+  gap: 10px;
 }
 
-.ed-sat {
-  flex: 0 0 auto;
-  width: 110px;
+/* Delay section proportional to plugin (0–960 of 1208 ≈ flex 4) */
+.ed-adv-group--delay {
+  flex: 4;
+  /* section divider matching plugin x=960 line */
+  border-right: 1px solid #2a2820;
 }
 
-.ed-divider {
-  width: 1px;
-  background: rgba(255,255,255,0.06);
-  margin: 0.25rem 0;
+/* Reverb section (960–1208 ≈ flex 1) */
+.ed-adv-group--reverb {
+  flex: 1;
 }
 
-.ed-section-header {
+.ed-adv-label {
+  font-family: var(--mono, monospace);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  /* lowercase to match the plugin's section labels */
+}
+
+/* Delay inner layout: character sub-group | thin divider | filter sub-group */
+.ed-adv-delay-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  min-height: 24px;
 }
 
-.ed-section-label {
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: lowercase;
-}
-
-/* ── Knobs ───────────────────────────────────────────────────────────────── */
-.ed-knobs {
+.ed-adv-sub {
   display: flex;
-  gap: 0.5rem;
   align-items: flex-end;
+  gap: 14px;
 }
 
+/* Thin inner divider (character ↔ spatial), matching plugin x=224 line */
+.ed-adv-inner-div {
+  width: 1px;
+  height: 46px;
+  background: #1e1d1a;
+  margin: 0 18px;
+  align-self: center;
+  flex-shrink: 0;
+}
+
+/* ── Canvas knobs ─────────────────────────────────────────────────────────── */
 .knob-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
-  user-select: none;
+  gap: 4px;
 }
 
 .knob-label {
-  font-family: var(--mono);
-  font-size: 0.62rem;
-  color: var(--muted);
-  letter-spacing: 0.06em;
-  text-align: center;
+  font-family: var(--mono, monospace);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  color: #787878;
+  white-space: nowrap;
 }
 
-/* ── Power button ────────────────────────────────────────────────────────── */
-.power-btn {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: rgba(255,255,255,0.04);
-  color: rgba(255,255,255,0.25);
+/* ── Toggle pills ─────────────────────────────────────────────────────────── */
+.toggle-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.15s;
-  padding: 0;
-  flex-shrink: 0;
+  padding-bottom: 2px;
 }
 
-.power-btn:hover {
-  border-color: rgba(255,255,255,0.2);
-  color: rgba(255,255,255,0.4);
+.toggle-track {
+  width: 30px;
+  height: 16px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  position: relative;
+  transition: background 0.18s, border-color 0.18s;
+}
+.toggle-track.on {
+  background: color-mix(in srgb, var(--tc) 25%, transparent);
+  border-color: var(--tc);
 }
 
-.power-btn.on {
-  border-color: var(--btn-color, #c49a52);
-  color: var(--btn-color, #c49a52);
-  background: rgba(196,154,82,0.08);
-  box-shadow: 0 0 8px rgba(196,154,82,0.15);
+.toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  transition: left 0.18s, background 0.18s;
+}
+.on .toggle-thumb {
+  left: 16px;
+  background: var(--tc);
 }
 
-/* ── Transport ───────────────────────────────────────────────────────────── */
+/* ── Transport ────────────────────────────────────────────────────────────── */
 .ed-transport {
+  max-width: 1208px;
+  margin: 16px auto 0;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.875rem 1.5rem;
-  background: #090a0d;
-  border-top: 1px solid rgba(255,255,255,0.05);
+  gap: 10px;
   flex-wrap: wrap;
 }
 
 .ed-clips {
   display: flex;
-  gap: 0.5rem;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
 .ed-clip-btn {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  padding: 0.35rem 0.75rem;
-  border-radius: 4px;
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,0.03);
-  color: var(--muted);
+  background: rgba(196,154,82,0.08);
+  border: 1px solid rgba(196,154,82,0.3);
+  color: rgba(196,154,82,0.85);
+  font-family: var(--mono, monospace);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  padding: 7px 16px;
   cursor: pointer;
+  border-radius: 3px;
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  transition: all 0.15s;
-  letter-spacing: 0.04em;
+  gap: 7px;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
 }
+.ed-clip-btn:hover    { background: rgba(196,154,82,0.14); border-color: rgba(196,154,82,0.5); }
+.ed-clip-btn.active   { background: rgba(196,154,82,0.2);  border-color: #c49a52; color: #c49a52; }
+.ed-clip-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-.ed-clip-btn:hover:not(:disabled) {
-  border-color: rgba(196,154,82,0.3);
-  color: var(--text);
-}
-
-.ed-clip-btn.active {
-  border-color: rgba(196,154,82,0.5);
-  color: #c49a52;
-  background: rgba(196,154,82,0.07);
-}
-
-.ed-clip-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.ed-clip-icon {
-  font-size: 0.6rem;
-}
+.ed-clip-icon { font-size: 9px; }
 
 .ed-stop-btn {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  padding: 0.35rem 0.75rem;
-  border-radius: 4px;
-  border: 1px solid rgba(255,80,80,0.25);
-  background: rgba(255,80,80,0.06);
-  color: rgba(255,110,110,0.7);
-  cursor: pointer;
-  transition: all 0.15s;
-  margin-left: auto;
-}
-
-.ed-stop-btn:hover {
-  border-color: rgba(255,80,80,0.5);
-  color: #ff6060;
-}
-
-.ed-status {
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  color: var(--muted);
-}
-
-.ed-error {
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  color: rgba(255,100,100,0.8);
-}
-
-/* ── Footer hint ─────────────────────────────────────────────────────────── */
-.ed-hint {
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  color: rgba(136,145,164,0.45);
-  text-align: center;
-  margin-top: 1rem;
+  background: rgba(200,60,60,0.12);
+  border: 1px solid rgba(200,60,60,0.4);
+  color: rgba(200,60,60,0.9);
+  font-family: var(--mono, monospace);
+  font-size: 12px;
   letter-spacing: 0.06em;
+  padding: 7px 14px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background 0.15s;
 }
+.ed-stop-btn:hover { background: rgba(200,60,60,0.22); }
 
-/* ── Responsive ──────────────────────────────────────────────────────────── */
-@media (max-width: 640px) {
-  .ed-faceplate {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
+.ed-status { color: rgba(255,255,255,0.4); font-size: 12px; font-family: var(--mono, monospace); }
+.ed-error  { color: #e05555; font-size: 12px; font-family: var(--mono, monospace); }
 
-  .ed-divider {
-    width: 100%;
-    height: 1px;
-    margin: 0;
-  }
-
-  .ed-sat {
-    width: 100%;
-  }
-
-  .ed-section-block {
-    padding: 0 0.25rem;
-  }
-
-  .ed-knobs {
-    justify-content: center;
-  }
+.ed-hint {
+  color: rgba(255,255,255,0.2);
+  font-size: 11px;
+  font-family: var(--mono, monospace);
+  letter-spacing: 0.05em;
+  margin: 12px 0 0;
+  max-width: 1208px;
 }
